@@ -1,3 +1,8 @@
 table, tr, td{
     border: 2px solid black;
 }
+
+.lowrating{ 
+    background-color: red;
+    font-style: italic;
+}

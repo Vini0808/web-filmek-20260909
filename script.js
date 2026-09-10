@@ -113,9 +113,15 @@ for(const film of filmek){
     tr.appendChild(tdGenre)
     table.appendChild(tr)
 
+
     const tdRating = document.createElement('td')
     tdRating.innerText = film.rating
-
-    tr.appendChild(tdRating)
+    if(tdRating <= 2){
+        tdRating.className = "lowrating"
+        tr.appendChild(tdRating)
+    }else{
+        tr.appendChild(tdRating)
+    }
     table.appendChild(tr)
 }
+
