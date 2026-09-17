@@ -108,10 +108,14 @@ for (const film of filmek) {
     tr.appendChild(tdGenre)
 
     const tdRating = document.createElement('td')
-    tdRating.innerText = film.rating
+    //tdRating.innerText = film.rating
 
     if (film.rating < 3) {
-        tdRating.className = 'lowrating'
+      tdRating.className = 'lowrating'
+    }
+
+    for (let i = 0; i < film.rating; i++) {
+      tdRating.innerText += '⭐'
     }
 
     tr.appendChild(tdRating)
