@@ -2,7 +2,7 @@ table, tr, td{
     border: 2px solid black;
 }
 
-.lowrating{ 
+table.my-table td.lowrating{ 
     color: red !important;
     font-style: italic;
 
