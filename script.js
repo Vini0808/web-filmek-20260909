@@ -91,23 +91,25 @@ const filmek = [
   }
 ];
 
-const table = document.getElementById('tartalom')
-for (const film of filmek) {
-    const tr = document.createElement('tr')
+const table = document.getElementById("tartalom")
 
-    const tdTitle = document.createElement('td')
+function renderFilms() {
+  table.innerHTML = ""
+  for (const film of filmek) {
+    const tr = document.createElement("tr")
+    const tdTitle = document.createElement("td")
+    const tdYear = document.createElement("td")
+    const tdGenre = document.createElement("td")
+    const tdRating = document.createElement("td")
+
     tdTitle.innerText = film.title
-    tr.appendChild(tdTitle)
-
-    const tdYear = document.createElement('td')
     tdYear.innerText = film.year
-    tr.appendChild(tdYear)
-
-    const tdGenre = document.createElement('td')
     tdGenre.innerText = film.genre
-    tr.appendChild(tdGenre)
+    tdRating.innerText = ""
 
-    const tdRating = document.createElement('td')
+    tr.appendChild(tdTitle)
+    tr.appendChild(tdYear)
+    tr.appendChild(tdGenre)
     //tdRating.innerText = film.rating
 
     if (film.rating < 3) {
@@ -116,9 +118,35 @@ for (const film of filmek) {
 
     for (let i = 0; i < film.rating; i++) {
       tdRating.innerText += '⭐'
-    }
+    } 
 
     tr.appendChild(tdRating)
     table.appendChild(tr)
+  }
 }
+
+renderFilms()
+
+const form = document.getElementById('filmForm')
+const titleInput = document.getElementById('title')
+const yearInput = document.getElementById('year')
+const genreInput = document.getElementById('genre')
+const ratingInput = document.getElementById('rating')
+
+function addFilm(event) {
+  event.preventDefault()
+
+  const newFilm = {
+    title: titleInput.value,
+    year: Number(yearInput.value),
+    genre: genreInput.value,
+    rating: Number(ratingInput.value)
+  }
+
+  filmek.push(newFilm)
+  renderFilms()
+  form.reset()
+}
+
+form.addEventListener("submit", addFilm)
 
