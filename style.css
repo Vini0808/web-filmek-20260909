@@ -3,6 +3,7 @@ table, tr, td{
 }
 
 .lowrating{ 
-    background-color: red;
+    color: red !important;
     font-style: italic;
+
 }
